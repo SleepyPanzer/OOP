@@ -1,4 +1,4 @@
-   public class Circle {
+    class Circle {
    double radius;
 
   public Circle() {
