@@ -1,43 +1,43 @@
-   class node {
+class Node {
     String name;
     int rollno;
-    node next;
+    Node next;
 
-    public node(String name, int rollno) {
+    public Node(String name, int rollno) {
         this.name = name;
         this.rollno = rollno;
         this.next = null;
     }
 
-    void display(node ptr) {
+    void display(Node ptr) {
         while (ptr != null) {
             System.out.println(ptr.name + ", " + ptr.rollno);
             ptr = ptr.next;
         }
     }
 
-    node insertAbeg(node headNode, String name, int rollno) {
-        node temp = new node(name, rollno);
+    Node insertAtBegining(Node headNode, String name, int rollno) {
+        Node temp = new Node(name, rollno);
         temp.next = headNode;
         headNode = temp;
         return headNode;
     }
 
-    void insertAtend(node headNode, String name, int rollno) {
-        node temp = new node(name, rollno);
+    void insertAtEnd(Node headNode, String name, int rollno) {
+        Node temp = new Node(name, rollno);
         while (headNode.next != null) {
             headNode = headNode.next;
         }
         headNode.next = temp;
     }
 
-    node insertInMid(node headNode, int position, String name, int rollno) {
+    Node insertInMiddle(Node headNode, int position, String name, int rollno) {
         if (position == 1) {
-            return insertAbeg(headNode, name, rollno);
+            return insertAtBegining(headNode, name, rollno);
         }
-        node temp = new node(name, rollno);
+        Node temp = new Node(name, rollno);
         int pos = 1;
-        node current = headNode;
+        Node current = headNode;
         while (current != null) {
             if (pos == position - 1) {
                 temp.next = current.next;
@@ -50,7 +50,7 @@
         return headNode;
     }
 
-    int search(node headNode, String name) {
+    int search(Node headNode, String name) {
         int position = 1;
         while (headNode != null) {
             if (headNode.name == name) {
@@ -62,10 +62,10 @@
         return -1;
     }
 
-    void delete(node headNode, int position) {
+    void delete(Node headNode, int position) {
         int pos = 1;
-        node previousNode = null;
-        node currentNode = headNode;
+        Node previousNode = null;
+        Node currentNode = headNode;
         if (position == 1) {
             headNode = headNode.next;
             return;
@@ -84,18 +84,18 @@
 public class task1 {
     public static void main(String[] args) {
 
-        node n1 = new node("shaheer", 1);
-        node n2 = new node("ashir", 9);
-        node n3 = new node("john", 16);
-        node n4 = new node("adbullah", 23);
-        node n5 = new node("zaid", 24);
-        node n6 = new node("zayan", 29);
-        node n7 = new node("murtaza", 38);
-        node n8 = new node("Saad", 42);
-        node n9 = new node("Farhan", 45);
-        node n10 = new node("obaid", 138);
+        Node n1 = new Node("shaheer", 1);
+        Node n2 = new Node("ashir", 9);
+        Node n3 = new Node("john", 16);
+        Node n4 = new Node("adbullah", 23);
+        Node n5 = new Node("zaid", 24);
+        Node n6 = new Node("zayan", 29);
+        Node n7 = new Node("murtaza", 38);
+        Node n8 = new Node("Saad", 42);
+        Node n9 = new Node("Farhan", 45);
+        Node n10 = new Node("obaid", 138);
 
-        node headNode = n1;
+        Node headNode = n1;
         n1.next = n2;
         n2.next = n3;
         n3.next = n4;
@@ -111,9 +111,9 @@ public class task1 {
         n1.display(headNode);
 
         System.out.println("\nInserting elements at different locations of the list");
-        headNode = n1.insertAbeg(headNode, "Sunny", 8);
-        headNode = n1.insertInMid(headNode, 1, "Bobby", 25);
-        n1.insertAtend(headNode, "Hammad", 238);
+        headNode = n1.insertAtBegining(headNode, "Sunny", 8);
+        headNode = n1.insertInMiddle(headNode, 1, "Bobby", 25);
+        n1.insertAtEnd(headNode, "Hammad", 238);
         n1.display(headNode);
 
         String nameToSearch = "Murtaza";
@@ -127,5 +127,3 @@ public class task1 {
         n1.display(headNode);
     }
 }
-
-

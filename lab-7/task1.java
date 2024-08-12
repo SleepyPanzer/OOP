@@ -1,82 +1,82 @@
-class node {
+class Node {
     String name;
     String designation;
     String department;
-    String company_name;
-    node previous_node;
-    node next_node;
+    String companyName;
+    Node previousNode;
+    Node nextNode;
 
-    public node(String name, String designation, String department, String company_name) {
+    public Node(String name, String designation, String department, String company_name) {
         this.name = name;
         this.designation = designation;
         this.department = department;
-        this.company_name = company_name;
-        this.previous_node = null;
-        this.next_node = null;
+        this.companyName = companyName;
+        this.previousNode = null;
+        this.nextNode = null;
     }
 
-    void display(node headNode) {
-        node temp = headNode;
+    void display(Node headNode) {
+        Node temp = headNode;
         while (temp != null) {
             System.out.println(
-                    temp.name + " | " + temp.designation + " | " + temp.department + " | " + temp.company_name);
-            temp = temp.next_node;
+                    temp.name + " | " + temp.designation + " | " + temp.department + " | " + temp.companyName);
+            temp = temp.nextNode;
         }
     }
 
-    node insertAtHead(node headNode, String name, String designation, String department, String company_name) {
+    Node insertAtHead(Node headNode, String name, String designation, String department, String companyName) {
         System.out.println("Inserting record of " + name + " at the head!");
-        node node_to_insert = new node(name, designation, department, company_name);
-        node_to_insert.next_node = headNode;
-        headNode.previous_node = node_to_insert;
-        return node_to_insert;
+        Node nodeToInsert = new Node(name, designation, department, companyName);
+        nodeToInsert.nextNode = headNode;
+        headNode.previousNode = nodeToInsert;
+        return nodeToInsert;
     }
 
-    void insertAtTail(node headNode, String name, String designation, String department, String company_name) {
+    void insertAtTail(Node headNode, String name, String designation, String department, String companyName) {
         System.out.println("Inserting record of " + name + " at the tail!");
-        node node_to_insert = new node(name, designation, department, company_name);
-        node temp = headNode;
-        while (temp.next_node != null) {
-            temp = temp.next_node;
+        Node nodeToInsert = new Node(name, designation, department, companyName);
+        Node temp = headNode;
+        while (temp.nextNode != null) {
+            temp = temp.nextNode;
         }
-        temp.next_node = node_to_insert;
-        node_to_insert.previous_node = temp;
+        temp.nextNode = nodeToInsert;
+        nodeToInsert.previousNode = temp;
     }
 
-    node insertAtPosition(node headNode, int position, String name, String designation, String department,
-            String company_name) {
-        node temp = headNode;
+    Node insertAtPosition(Node headNode, int position, String name, String designation, String department,
+            String companyName) {
+                Node temp = headNode;
         if (position == 1) {
-            temp = insertAtHead(headNode, name, designation, department, company_name);
+            temp = insertAtHead(headNode, name, designation, department, companyName);
             return temp;
         }
         int pos = 1;
         while (pos != position - 1) {
-            temp = temp.next_node;
+            temp = temp.nextNode;
             pos++;
         }
-        if (temp.next_node == null) {
-            insertAtTail(headNode, name, designation, department, company_name);
+        if (temp.nextNode == null) {
+            insertAtTail(headNode, name, designation, department, companyName);
             return headNode;
         }
         System.out.println("Inserting record of " + name + " at position " + position);
-        node node_to_insert = new node(name, designation, department, company_name);
-        node_to_insert.previous_node = temp;
-        node_to_insert.next_node = temp.next_node;
-        temp.next_node.previous_node = node_to_insert;
-        temp.next_node = node_to_insert;
+        Node node_to_insert = new Node(name, designation, department, companyName);
+        node_to_insert.previousNode = temp;
+        node_to_insert.nextNode = temp.nextNode;
+        temp.nextNode.previousNode = node_to_insert;
+        temp.nextNode = node_to_insert;
         return headNode;
     }
 
-    int search(node headNode, String name) {
+    int search(Node headNode, String name) {
         System.out.println("Searching " + name + "'s record from the list!");
-        node temp = headNode;
+        Node temp = headNode;
         int position = 1;
         while (temp != null) {
-            if (temp.name == name) {
+            if (temp.name.equals(name)) {
                 return position;
             }
-            temp = temp.next_node;
+            temp = temp.nextNode;
             position++;
         }
         return -1;
@@ -85,8 +85,8 @@ class node {
 
 public class task1 {
     public static void main(String[] args) {
-        node n1 = new node("SHAHEER", "MANAGER", "FINANCE", "PSO");
-        node headNode = n1;
+        Node n1 = new Node("SHAHEER", "MANAGER", "FINANCE", "PSO");
+        Node headNode = n1;
         System.out.println("Initially Doubly Linked List was: ");
         n1.display(headNode);
         System.out.println("\nInserting data at different positions of the list!");

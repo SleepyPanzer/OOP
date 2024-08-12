@@ -1,10 +1,8 @@
-
-
-class task3 {
+public class Task3 {
 
     static int i = 2;
-    public static boolean isPrime(int n)
-    {
+
+    public static boolean isPrime(int n) {
 
         if (n == 0 || n == 1) {
             return false;
@@ -13,7 +11,6 @@ class task3 {
         if (n == i)
             return true;
 
-        // Base cases
         if (n % i == 0) {
             return false;
         }
@@ -21,15 +18,11 @@ class task3 {
         return isPrime(n);
     }
 
-    // Driver Code
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         if (isPrime(35)) {
             System.out.println("true");
-        }
-        else {
+        } else {
             System.out.println("false");
         }
     }
 }
-

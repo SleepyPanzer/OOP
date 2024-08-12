@@ -1,26 +1,26 @@
-class node {
+class Node {
     int data;
-    node next;
+    Node next;
 
-    public node(int data) {
+    public Node(int data) {
         this.data = data;
         this.next = null;
     }
 
-    void display(node headNode) {
+    void display(Node headNode) {
         while (headNode != null) {
             System.out.print(headNode.data + " ");
             headNode = headNode.next;
         }
     }
 
-    node reverse(node headNode) {
-        node previous = null;
-        node current = headNode;
-        node next = null;
+    Node reverse(Node headNode) {
+        Node previous = null;
+        Node current = headNode;
+        Node next = null;
         while (current != null) {
-            next = current.next; // Store the next node
-            current.next = previous; // Reverse the pointer of the current node
+            next = current.next;
+            current.next = previous;
             previous = current;
             current = next;
         }
@@ -30,13 +30,13 @@ class node {
 
 public class task2 {
     public static void main(String[] args) {
-        node n1 = new node(16);
-        node n2 = new node(23);
-        node n3 = new node(24);
-        node n4 = new node(29);
-        node n5 = new node(38);
+        Node n1 = new Node(16);
+        Node n2 = new Node(23);
+        Node n3 = new Node(24);
+        Node n4 = new Node(29);
+        Node n5 = new Node(38);
 
-        node headNode = n1;
+        Node headNode = n1;
         n1.next = n2;
         n2.next = n3;
         n3.next = n4;
